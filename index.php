@@ -16,6 +16,7 @@
             <ul>
                 <a href="http://rclubs.me/about"><li class="topbutton" id="left">About</li></a>
                 <a href="http://rclubs.me/feedback"><li class="topbutton" id="left">Feedback</li></a>
+                <a href="http://rclubs.me/allClubs"><li class="topbutton" id="left">All Clubs</li></a>
                 <a href="http://rclubs.me/signup"><li class="topbutton" id="right" style="margin-right:3vw;">
                 	<?php
                 	if (!isset($_SESSION['myusername']))

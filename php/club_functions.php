@@ -1,4 +1,4 @@
-                                                                                                                                                                <?php
+                                                                <?php
 //This file contains commonly used functions for managing clubs
 
 function connectToDatabase()
@@ -54,19 +54,32 @@ function getUserId($username)
     return $db_field['userid'];
 }
 
-function isClubAdded($myuserid, $myclubid)
+function isClubAdded($userid, $clubid)
 {
 
     mysql_select_db("rclubsme_userdata")or die("cannot select DB");
 
     //Checks to see if the user already added the club to the MyClubs list
-    $tbl_name = $myuserid . "_Clubs";
+    $tbl_name = $userid . "_Clubs";
     $sql = "CREATE TABLE IF NOT EXISTS $tbl_name (entryid int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, clubid int(10))";
     mysql_query($sql);
     
-    $sql = "SELECT * FROM $tbl_name WHERE clubid='$myclubid'";
+    $sql = "SELECT * FROM $tbl_name WHERE clubid='$clubid'";
     $result = mysql_query($sql);
     return (mysql_num_rows($result) != 0); 
+}
+
+function isUserAdded($userid, $clubid)
+{
+    mysql_select_db("rclubsme_clubdata")or die("cannot select DB");
+
+    //Checks to see if the user already added the club to the MyClubs list
+    $tbl_name = $clubid . "_Users";
+    $sql = "CREATE TABLE IF NOT EXISTS $tbl_name (entryid int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, userid int(10), boolean)";
+    mysql_query($sql);
+    $sql = "SELECT * FROM $tbl_name WHERE userid='$userid'";
+    $result = mysql_query($sql);
+    return (mysql_num_rows($result) != 0);  
 }
 
 function addClub($userid, $clubid)
@@ -85,6 +98,22 @@ function addClub($userid, $clubid)
     }
 }
 
+function addUser($userid, $clubid)
+{
+    mysql_select_db("rclubsme_clubdata")or die("cannot select DB");
+    //Add a new entry in the MyClubs table that maps the user id to the club id
+    $tbl_name = $clubid . "_Users";
+    $sql = "CREATE TABLE IF NOT EXISTS $tbl_name (entryid int(10) NOT NULL AUTO_INCREMENT PRIMARY KEY, userid int(10), admin boolean)";
+    mysql_query($sql);
+    
+    $query = "INSERT INTO $tbl_name (userid,admin) VALUES ('$userid',false)";
+    $data = mysql_query($query)or die(mysql_error());
+    if($data)
+    {
+        return "User successfully added to the Club's list<br/>";
+    }
+}
+
 function deleteClub($userid, $clubid)
 {
     mysql_select_db("rclubsme_userdata")or die("cannot select DB");
@@ -97,6 +126,32 @@ function deleteClub($userid, $clubid)
     {
         echo "Club successfully removed from your MyClubs list.<br/>";
     }
+}
+
+function deleteUser($userid, $clubid)
+{
+    mysql_select_db("rclubsme_clubdata")or die("cannot select DB");
+    //Add a new entry in the MyClubs table that maps the user id to the club id
+    $tbl_name = $clubid . "_Users";
+    //Delete this entry in the MyClubs table
+    $query = "DELETE From $tbl_name WHERE userid='$userid'";
+    $data = mysql_query($query)or die(mysql_error());
+    if($data)
+    {
+        return "User successfully removed from the Club's list.<br/>";
+    }
+}
+
+function isAdmin($userid, $clubid)
+{
+    mysql_select_db("rclubsme_clubdata")or die("cannot select DB");
+    //Add a new entry in the MyClubs table that maps the user id to the club id
+    $tbl_name = $clubid . "_Users";
+    //Delete this entry in the MyClubs table
+    $query = "SELECT * From $tbl_name WHERE userid='$userid'";
+    $data = mysql_query($query);
+    $db_field = mysql_fetch_assoc($data);
+    return $db_field['admin'];
 }
 
 function getDaytimeHours($day_time)
@@ -130,8 +185,5 @@ function getDaytimeHours($day_time)
     return $str;
 }
 ?>
-                            
-                            
-                            
                             
                             
