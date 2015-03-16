@@ -30,10 +30,10 @@
                 ?>
             </div>
             <div class="account" id="accountright">
-                <p><input name="clubName" type="text" required></p>
+                <p><input name="clubname" type="text" required></p>
                 <p><input name="location" type="text" required></p>
                 <p>
-                    <select name="meetingDay" required>
+                    <select name="meetingday1" required>
                         <option value="">Day of the Week...</option>
                         <option value="Monday">Monday</option>
                         <option value="Tuesday">Tuesday</option>
@@ -44,10 +44,42 @@
                         <option value="Sunday">Sunday</option>
                     <select>
                     from
-                    <p><input name="startTime" type="time" required></p> 
+                    <input name="starttime1" type="time" required>
                     to
-                    <p><input name="endTime" type="time" required></p> 
-                </p>        
+                    <input name="endtime1" type="time" required> 
+                </p>      
+                                <p>
+                    <select name="meetingday2">
+                        <option value="">Day of the Week...</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    <select>
+                    from
+                    <input name="starttime2" type="time">
+                    to
+                    <input name="endtime2" type="time"> 
+                </p> 
+                <p>
+                    <select name="meetingday3">
+                        <option value="">Day of the Week...</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                    <select>
+                    from
+                    <input name="starttime3" type="time"> 
+                    to
+                    <input name="endtime3" type="time"> 
+                </p>   
             </div>
         </form>
         </center>
