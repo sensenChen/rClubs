@@ -1,30 +1,36 @@
-                                                                                                <?php 
-    include ( "../clubpage/header.php" ); 
+                                                                <?php 
+    session_start();
     require_once('../php/club_functions.php');
 ?>
-
+<?php 
+  include ( "../header.php" ); 
+?>
 <?php
-    connectToDatabase();
-
+    connectToDatabase();	
     if(isset($_GET['c'])) {   //Get club name from link
         $myurl = mysql_real_escape_string($_GET['c']);   //Store club name in variable
-
+    	
+        	
         //Check if club is valid and in database, then get information about the club
         if(preg_match("/^[a-zA-Z0-9_\-]+$/", $myurl)){
-            $check = mysql_query("SELECT urlname, name, location, day_time FROM Clubs WHERE urlname = '$myurl'");
+            $check = mysql_query("SELECT urlname, name, location, day_time, public FROM Clubs WHERE urlname = '$myurl'");
             if(mysql_num_rows($check)==1){
                 $get = mysql_fetch_assoc($check);
                 $clubname = $get['name'];
                 $location = $get['location'];
                 $day_time = $get['day_time'];
-
                 $hours = getDaytimeHours($day_time);
-            }
-            else{
+                $public = $get['public'];
+                list($myuserid, $myclubid) = getUserAndClubId($_SESSION['myusername'], $myurl);
+                $isMember = isUserAdded($myuserid, $myclubid);
+                $isAdmin = isAdmin($myuserid, $myclubid);
+                
+            }else{
                 echo "<strong>Club does not exist!</strong>";
                 exit();
             }
         }
+      	
     }
 ?>
 
@@ -73,7 +79,7 @@ else
     <div id="navcontainer" class="clubnav" style="background: #99ccff;"> 
     <ul>
         <li><a href="#">About</a></li>
-        <li><a href="#">Posts</a></li>
+        <li><a href="#">Announcements</a></li>
         <li><a href="#">Members</a></li>
         <li><a href="#">Photos</a></li>
     </ul>
@@ -89,17 +95,41 @@ else
     </th>
     <tr>
         <td>Meeting Day(s)</td>
-        <td><?php 	
-        	echo $hours;
+        <td><?php 
+        	if ($public || $isMember)
+        		echo $hours;
+        	else 
+        		echo "Please add the club to view this information.";
             ?>
         </td>
     </tr>
     <tr>
         <td>Location</td>
-        <td><?php echo "$location"; ?></td>
+        <td><?php 
+        if ($public  || $isMember) {
+        	if($isAdmin) {
+        		echo '<form method="post" action="change_club.php?club=';
+        		echo $get['urlname'];
+        		echo '">
+                        <input name="location" type="text" value="';
+                }
+        	echo "$location"; 
+        	if($isAdmin) {
+        		echo '">
+                	</form>';
+                }
+        }
+        else 
+        	echo "Please add the club to view this information.";	
+        ?></td>
     </tr>
     </table>
 </div>
+                            
+                            
+                            
+                            
+                            
                             
                             
                             

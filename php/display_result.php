@@ -15,8 +15,8 @@
         {
             exit("Club does not exist! Perhaps, you can mention it in the feedback form.");
         }
-
-        header("location: http://rclubs.me/clubpage/" . $myurl);
+	$myurl = "http://rclubs.me/clubpage/" . $myurl;
+        echo "<meta http-equiv='refresh' content='0; url=$myurl'>";
     }
 ?>
 <html>

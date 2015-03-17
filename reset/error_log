@@ -1,0 +1,2 @@
+[16-Oct-2014 19:40:10 UTC] PHP Parse error:  syntax error, unexpected '&' in /home/rclubsme/public_html/reset/send_reset_email.php on line 38
+[16-Oct-2014 19:40:55 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/rclubsme/public_html/reset/send_reset_email.php on line 56

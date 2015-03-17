@@ -1,0 +1,11 @@
+[15-Mar-2015 05:59:44 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/rclubsme/public_html/clubform/submit.php:2) in /home/rclubsme/public_html/clubform/submit.php on line 3
+[15-Mar-2015 05:59:44 UTC] PHP Warning:  mysql_select_db(): Access denied for user 'rclubsme'@'localhost' (using password: NO) in /home/rclubsme/public_html/php/club_functions.php on line 50
+[15-Mar-2015 05:59:44 UTC] PHP Warning:  mysql_select_db(): A link to the server could not be established in /home/rclubsme/public_html/php/club_functions.php on line 50
+[15-Mar-2015 06:00:01 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/rclubsme/public_html/clubform/submit.php:2) in /home/rclubsme/public_html/clubform/submit.php on line 3
+[15-Mar-2015 06:02:05 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/rclubsme/public_html/clubform/submit.php:2) in /home/rclubsme/public_html/clubform/submit.php on line 3
+[16-Mar-2015 04:51:34 UTC] PHP Parse error:  syntax error, unexpected ';' in /home/rclubsme/public_html/php/club_functions.php on line 114
+[16-Mar-2015 05:33:48 UTC] PHP Parse error:  syntax error, unexpected 'echo' (T_ECHO) in /home/rclubsme/public_html/clubform/submit.php on line 27
+[16-Mar-2015 05:45:34 UTC] PHP Parse error:  syntax error, unexpected 'i' (T_STRING), expecting ';' in /home/rclubsme/public_html/php/club_functions.php on line 128
+[16-Mar-2015 05:46:07 UTC] PHP Warning:  strtotime() expects parameter 1 to be string, array given in /home/rclubsme/public_html/php/club_functions.php on line 121
+[16-Mar-2015 05:46:07 UTC] PHP Warning:  strtotime() expects parameter 1 to be string, array given in /home/rclubsme/public_html/php/club_functions.php on line 122
+[16-Mar-2015 05:55:07 UTC] PHP Parse error:  syntax error, unexpected '$message' (T_VARIABLE) in /home/rclubsme/public_html/clubform/submit.php on line 47
