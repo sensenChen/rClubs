@@ -1,7 +1,6 @@
                                                                                                 <?php
     session_start();
 ?>
-
 <?php 
   include ( "../header.php" ); 
 ?>
@@ -9,7 +8,7 @@
     <body>
         <div class="logo">
                 <center>
-                    <img src="../images/rClubs.png" width="20%;">
+                    <img src="../images/rClubs3.png" width="20%;">
                 </center>
             </div>
         <center>

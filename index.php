@@ -1,18 +1,24 @@
                                 <?php
     session_start();
 ?>
+<?php 
+  include ( "header.php" ); 
+?>
 <html>
+<!--
     <head>
         <title>rClubs</title>
         <link type="text/css" rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-<script src="//code.jquery.com/jquery-1.10.2.js"></script>
-  <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
-  <script type="text/javascript" src="js/autocomplete.js"></script>
+  	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
+	<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+ 	<script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+  	<script type="text/javascript" src="js/autocomplete.js"></script>
     </head>
+-->
     <body>
+<!--
         <div class="heading">
-            <a href="http://rclubs.me"><img class="homebutton" src="images/rClubs.png"></a>
+            <a href="http://rclubs.me"><img class="homebutton" src="images/rClubs3.png"></a>
             <ul>
                 <a href="http://rclubs.me/about"><li class="topbutton" id="left">About</li></a>
                 <a href="http://rclubs.me/feedback"><li class="topbutton" id="left">Feedback</li></a>
@@ -44,10 +50,11 @@
             </ul>
         </div>
         <div class="heading_underline"></div>
+-->
         <div class="search">
             <div class="logo">
                 <center>
-                    <img src="/images/rClubs.png" width="20%;">
+                    <img src="/images/rClubs3.png" width="20%;">
                 </center>
             </div>
             <center>

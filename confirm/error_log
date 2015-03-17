@@ -21,3 +21,4 @@
 [12-Dec-2014 04:05:07 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/rclubsme/public_html/confirm/index.php:1) in /home/rclubsme/public_html/confirm/index.php on line 2
 [15-Dec-2014 23:50:30 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/rclubsme/public_html/confirm/index.php:1) in /home/rclubsme/public_html/confirm/index.php on line 2
 [16-Dec-2014 03:12:41 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/rclubsme/public_html/confirm/index.php:1) in /home/rclubsme/public_html/confirm/index.php on line 2
+[15-Mar-2015 05:58:29 UTC] PHP Warning:  session_start(): Cannot send session cache limiter - headers already sent (output started at /home/rclubsme/public_html/confirm/index.php:1) in /home/rclubsme/public_html/confirm/index.php on line 2

@@ -82,7 +82,61 @@ function isUserAdded($userid, $clubid)
     return (mysql_num_rows($result) != 0);  
 }
 
-function addClub($userid, $clubid)
+
+function validURL($text)
+{
+    // Swap out Non "Letters" with a -
+    $text = preg_replace('/[^\\pL\d]+/u', '-', $text); 
+
+    // Trim out extra -'s
+    $text = trim($text, '-');
+
+    // Convert letters that we have left to the closest ASCII representation
+    $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
+
+    // Make text lowercase
+    $text = strtolower($text);
+
+    // Strip out anything we haven't been able to convert
+    $text = preg_replace('/[^-\w]+/', '', $text);
+
+    return $text;
+}
+
+
+function insertClub($clubname, $location, $meetingdays, $starttimes, $endtimes) //Adds the club to the database
+{
+	mysql_select_db("rclubsme_users")or die("cannot select DB");
+	$tbl_name = 'Clubs';
+	$urlname = str_replace(' ', '_', $clubname);
+	$urlname = validURL($urlname);
+	
+	$sql = "SELECT * FROM $tbl_name WHERE name='$clubname' OR urlname ='$urlname'";
+   	$result = mysql_query($sql);
+    	if (mysql_num_rows($result) != 0) {
+    		echo "This club already exists";
+    		return false;
+    	} 
+	
+        
+	$clubname = mysql_real_escape_string($clubname);
+	$location = mysql_real_escape_string($location);
+	
+	$daytime ="";
+	for ($i = 0; $i < count($meetingdays); $i++) {
+		$starttime = date("G:i", strtotime($starttimes[$i])); 
+        	$endtime = date("G:i", strtotime($endtimes[$i]));
+		if($i>0) 
+			$daytime .= ';';
+		$daytime .= $meetingdays[$i] . '_' . $starttime . '_' . $endtime;
+	} 
+	
+	$sql = "INSERT INTO $tbl_name (urlname, name, location, day_time, public) VALUES ('$urlname', '$clubname', '$location', '$daytime', true)";
+	$result = mysql_query($sql);
+	return true;
+}
+
+function addClub($userid, $clubid) //Adds club to the user's list
 {
     mysql_select_db("rclubsme_userdata")or die("cannot select DB");
     //Add a new entry in the MyClubs table that maps the user id to the club id
@@ -98,7 +152,7 @@ function addClub($userid, $clubid)
     }
 }
 
-function addUser($userid, $clubid)
+function addUser($userid, $clubid) //Adds user to the club's list
 {
     mysql_select_db("rclubsme_clubdata")or die("cannot select DB");
     //Add a new entry in the MyClubs table that maps the user id to the club id
@@ -152,6 +206,14 @@ function isAdmin($userid, $clubid)
     $data = mysql_query($query);
     $db_field = mysql_fetch_assoc($data);
     return $db_field['admin'];
+}
+
+function makeAdmin($userid, $clubid)
+{
+    mysql_select_db("rclubsme_clubdata")or die("cannot select DB");
+    $tbl_name = $clubid . "_Users";
+    $query = "UPDATE $tbl_name SET admin=1 WHERE userid='$userid'";
+    $data = mysql_query($query);
 }
 
 function getDaytimeHours($day_time)
