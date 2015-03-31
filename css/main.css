@@ -694,6 +694,14 @@ img.logo2{
     color: #333;
     /*float: right;*/
 }
+
+#clubformright {
+    width: 40%;
+    text-align: left;
+    color: #333;
+    /*float: right;*/
+}
+
   
 #wrapper {
     margin:0 auto;
