@@ -14,12 +14,13 @@
         <center>
         <form method="post" action="submit.php">
             <div class="account" id="accountname"><//?php echo "$username"; ?></div>
-            <div class="accountbutton" id="accountedit"><input class="accountbutton" id="accountsave" type="submit" value="Submit"></div>
             <div class="account" id="accountleft">
                 <?php 
                     echo "<p>Club Name</p>";
                     echo "<p>Location</p>";
                     echo "<p>Meeting times</p>";
+                    echo "<br>";
+                    echo "<br>";
                 ?>
             </div>
             <div class="account" id="accountmid">
@@ -27,9 +28,11 @@
                     echo "<p>|</p>";
                     echo "<p>|</p>";
                     echo "<p>|</p>";
+                    echo "<br>";
+                    echo "<br>";
                 ?>
             </div>
-            <div class="account" id="accountright">
+            <div class="account" id="clubformright">
                 <p><input name="clubname" type="text" required></p>
                 <p><input name="location" type="text" required></p>
                 <p>
@@ -81,6 +84,7 @@
                     <input name="endtime3" type="time"> 
                 </p>   
             </div>
+            <div class="accountbutton" id="accountedit"><input class="accountbutton" id="accountsave" type="submit" value="Submit"></div>
         </form>
         </center>
     </body>
