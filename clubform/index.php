@@ -1,9 +1,9 @@
 <?php
-    //session_start();
-    //if (!isset($_SESSION['myusername'])) {
-        //echo "You must be logged in to view this page";
-        //exit(0);
-    //}
+    session_start();
+    if (!isset($_SESSION['myusername'])) {
+        echo "You must be logged in to view this page";
+        exit(0);
+    }
 ?>  
 <?php 
     include ( "../header.php" ); 
@@ -21,7 +21,7 @@
 
                     function moreFields() {
                         counter++;
-                        if(counter>3)
+                        if(counter>10)
                             return;
                         var newFields = document.getElementById('readroot').cloneNode(true);
                         newFields.id = '';
@@ -38,10 +38,7 @@
                         insertHere.parentNode.insertBefore(newFields,insertHere);
                         
                     }
-                    
-                    function getCounter() {
-                        return counter;
-                    }
+
                     window.onload = moreFields;
                 </script>
                 
@@ -81,7 +78,7 @@
                 </p>
                 
                 <span id="writeroot"></span>
-                <input type="button" onclick="moreFields()" value="Give me more fields!" />
+                <input type="button" onclick="moreFields()" value="Add more fields" />
  
             </div>
             <div class="accountbutton" id="accountedit"><input class="accountbutton" id="accountsave" type="submit" value="Submit"></div>
