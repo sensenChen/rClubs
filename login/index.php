@@ -4,45 +4,105 @@
         header("location: http://rclubs.me");
     }
 ?>
-<?php 
-  	include ( "../header.php" ); 
+                                <?php
+    session_start();
+    if (isset($_SESSION['myusername'])) {
+        header("location: http://rclubs.me");
+    }
 ?>
-<html>
-    <body>
-        <center>
-            <div id="bodi">
-                <div class="talk">
-                    <p id=slogan class="body-text">rClubs</p>
-                    <p id="descr" class="body-text">Manage your clubs more easily with our very useful features</p>
-                </div>
-                <div class="boxes">
-                    <form method="post" action="checklogin.php">
-                    	<p  class="error-text">
-                    	<?php
-	                    	$invalid=$_GET['invalid'];
-	                    	if($invalid == "true")
-	                    		echo("Invalid username or password.");
-                   	 ?>
-                   	 </p>
-                        <input name="myusername" id="fbox" type="text" placeholder="username or email">
-                        <input name="mypassword" id="fbox" type="password" placeholder="password">
-                        <font size="5vw"><a href="../reset/forgot_password.php">(Forgot Password?)</a></font>
-                        <br/>
+<!doctype html>
+<html lang="en-US">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html">
+    <title>rClubs</title>
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Ubuntu">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Arvo">
+    <link rel="shortcut icon" href="http://static.tmimgcdn.com/img/favicon.ico">
+    <link rel="icon" href="http://static.tmimgcdn.com/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" media="all" href="../css/signup.css">
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js"></script>
+</head>
 
-                        <input id="register" type="submit" value="Login">
-                    </form>
-                </div>
-              
-            </div>
+<body>
+    <nav>
+    <div class="wrapper">
+        <div class="logo"><a href="http://rclubs.me"><img  id="logoo" src="../images/rClubs4.png"></a></div>
             
-            <div class="bottom">
-                <p id="why" class="bottom-text">Why should you use rClubs?</p>
-            </div>
-        </center>
+        <ul id="menu" class="clearfix">
+            <li><a href="http://rclubs.me">Home</a></li>
+            <li><a href="http://rclubs.me/about">About</a></li>
+            <li><a href="http://rclubs.me/allClubs">Browse Clubs</a></li>
+            
+            <?php if(!isset($_SESSION['myusername'])){ ?>
+            <li><a href="http://rclubs.me/login">Login</a></li>
+            <?php } ?> 
+            
+            <?php if(!isset($_SESSION['myusername'])){ ?>
+            <li><a href="http://rclubs.me/signup">Signup</a></li>
+            <?php } ?> 
+            
+            <?php if(isset($_SESSION['myusername'])){ ?>
+            <li><a href="#">Account</a>
+                <ul>
+                <li><a href="http://rclubs.me/account">Profile</a></li>
+                <li><a href="http://rclubs.me/myclubs">MyClubs</a></li>
+                <li><a href="http://rclubs.me/chat">Chat</a></li>
+                <li><a href="http://rclubs.me/login/logout.php">Logout</a></li>
+                <li><a href="#"></a></li>
+                </ul>
+            </li>
+            <?php } ?> 
+        </ul>
+    </div>
+    </nav>
+<script type="text/javascript">
+$(function(){
+  $('a[href="#"]').on('click', function(e){
+    e.preventDefault();
+  });
+  
+  $('#menu > li').on('mouseover', function(e){
+    $(this).find("ul:first").show();
+    $(this).find('> a').addClass('active');
+  }).on('mouseout', function(e){
+    $(this).find("ul:first").hide();
+    $(this).find('> a').removeClass('active');
+  });
+  
+  $('#menu li li').on('mouseover',function(e){
+    if($(this).has('ul').length) {
+      $(this).parent().addClass('expanded');
+    }
+    $('ul:first',this).parent().find('> a').addClass('active');
+    $('ul:first',this).show();
+  }).on('mouseout',function(e){
+    $(this).parent().removeClass('expanded');
+    $('ul:first',this).parent().find('> a').removeClass('active');
+    $('ul:first', this).hide();
+  });
+});
+</script>
     
-        
-    </body>
+    
+    <form method="post" action="checklogin.php">
+        <h1>rClubs Login</h1>
+        <div class="question">
+            <input  name="myusername" type="text" required/>
+            <label>Username</label>
+        </div>
+        <div class="question">
+            <input name="mypassword" type="password" required/>
+            <label>Password</label>
+        </div>
+        <button>Login</button>
+        <a href="../reset/forgot_password.php" id="forgot">Forgot Password</a>
+    </form>
+    
+</body>
 </html>
+              
                             
                             
                             
