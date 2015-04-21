@@ -482,3 +482,131 @@ form .question input[type="password"]:valid ~ label {
   -webkit-transform: translate(5px, -35px) scale(0.6);
   transform: translate(5px, -35px) scale(0.6);
 }
+
+.page-wrapper{
+  position: relative;
+  display: inline-block;
+  max-width: 70%;
+  min-width: 70%;
+  box-sizing: border-box;
+  padding: 30px 25px;
+  background-color: white;
+  border-radius: 40px;
+  margin: 40px 0;
+  left: 50%;
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+}
+
+.page-wrapper h1{
+    color: grey;
+    font-size: 5em;
+}
+
+.page-wrapper #banner-text{
+    font-family: 'Lato';
+    color: #414141;
+}
+
+.page-wrapper .banner{
+    max-width: 95%;
+}
+
+
+
+
+.page-wrapper center{
+    font-family: Century Gothic;
+}
+
+#accountbox {
+    float: right;
+    width: 20vw;
+    padding: .7vw;
+    border-radius: 1vw;
+    border-width: .2vw;
+    font-size: 1.5vw;
+}   
+
+
+#account-submit {
+    width: 10%;
+    height: 2vw;
+    position:fixed;
+    outline:none;
+    border-radius: 5px;
+    font-size: 1vw;
+    margin-top: 16vw;
+    margin-left: 0.5vw;
+    position:absolute;
+}                    
+                            
+.account {
+    display: inline-block;
+    font-size: 1vw;
+}
+
+#accountname {
+    height: 10vw;
+    width: 100%;
+    /*background-color: #B3B6A3;*/
+    font-size: 5vw;
+    color: #B3B6A3;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 10vw;
+    font-family: Century Gothic;
+}
+
+.accountbutton {
+    width: 3vw;
+    margin-bottom: 2vw;
+    padding: .2vw;
+    background-color: #99ccff;    
+    border-radius: 1vw;
+}
+
+.accountbutton a {
+    color: white;
+    font-size: 1vw;
+    text-decoration: none;
+}
+
+.accountbutton a:hover {
+    color: #333;
+}
+
+#accountsave {
+    border:0;
+    background: transparent;
+    margin-bottom: 0vw;
+    color: white;
+}
+
+#accountsave:hover {
+    color: #333;
+}
+
+#accountleft {
+    width: 20%;
+    text-align: right;
+    color: #333;
+    /*float: left;*/
+}
+
+#accountmid {
+    width: 3%;
+    text-align: center;
+    color: #99ccff;
+}
+
+#accountright {
+    width: 20%;
+    text-align: left;
+    color: #333;
+    /*float: right;*/
+}

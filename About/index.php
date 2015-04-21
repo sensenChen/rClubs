@@ -1,9 +1,10 @@
-                                                                                                <?php
+<?php
     session_start();
 ?>
 <?php 
-  include ( "../header.php" ); 
+  include ( "../header/header.php" ); 
 ?>
+<!--
 <html>  	
     <body>
         <div class="logo">
@@ -30,7 +31,19 @@
       
     </body>
 </html>
-                            
-                            
-                            
-                            
+-->                 
+<html>  	
+	<body>                
+	<div class="page-wrapper">
+        <header class="banner">
+            	<h1><div><img  id="logoo" src="../images/rClubs3.png"></div>
+                <span id="banner-text"><span id="first-letter">A</span> website focused on allowing everyone to create or join a club with ease.</span>
+                <span id="banner-text"><span id="first-letter">M</span>anage and organize your club or organization for free.</span>
+                <span id="banner-text"><span id="first-letter">J</span>oin a club you're interested in and stay up to date with it.</span>
+                <span id="banner-text">Simple <span id="first-letter">&</span> Easy.</span>
+            	</h1>
+            	<a href="http://rclubs.me/signup" class="signup-button">SIGNUP</a>
+        </header>
+    	</div>
+	</body>
+</html>
